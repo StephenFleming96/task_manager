@@ -17,7 +17,7 @@
 		<p class='form-select'>
 			<%= form.label :end %>
 			<br/>
-			<%= form.datetime_select :end %>
+			<%= form.datetime_select :end, default: 2.days.from_now  %>
 		</p>
 
 		<p>
