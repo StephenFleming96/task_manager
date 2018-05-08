@@ -1,0 +1,52 @@
+<div class="container">
+	<nav class="full">
+		<div class="header-text spacing-light bg-light-grey shadow-light-grey border-light-grey">
+			<p>TODO</p>
+		</div>
+		<div class="full">
+			<div class="left spacing-top inline">
+				<div class="btn btn-blue inline"><a href="/dash/new" class="remove-link-decoration"> New Task</a></div>
+			</div>
+			<div class="right spacing-top inline">
+				<div class="btn btn-blue inline"><a href="/logout" class="remove-link-decoration">Log Out</a></div>
+				<div class="btn btn-blue inline"><a href="/settings" class="remove-link-decoration">Settings</a></div>
+			</div>
+		</div>
+		<br/>
+	</nav>
+	<br/>
+
+	<div class="container">
+		<br/>
+		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Time Left</th>
+				<th>Actions</th>
+			</tr>
+
+			<% @tasks.each do |task| %>
+				<% 
+					_task_stat = task.status.to_i; 
+					_taskId = task.id; 
+				%>
+
+				<tr class='dash-table-row'>
+					<td><%= task.title %></td>
+					<td><%= task.description %></td>
+					<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
+						<%= ApplicationController.int_to_status(task.status.to_i) %>
+					</td>
+					<td class='text-centered'><%= task.end %></td>
+					<td class='text-centered'>
+						<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
+						<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+

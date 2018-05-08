@@ -1,0 +1,29 @@
+ 
+ 
+		<p>
+			<%= frm.label :title %>
+			<br/>
+			<%= frm.text_field :title %>
+		</p>
+
+		<p>
+			<%= frm.label :description %>
+			<br/>
+			<%= frm.text_field :description %>
+		</p>
+
+		<p class='frm-select'>
+			<%= frm.label :status %>
+			<br/>
+			<%= render '/tasks/dropdown', default_status: _task_stat %>
+		</p>
+
+		<p class='frm-select'>
+			<%= frm.label :end %>
+			<br/>
+			<%= frm.datetime_select :end %>
+		</p>
+
+		<p>
+			<%= frm.submit %>
+		</p>
