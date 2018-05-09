@@ -31,5 +31,9 @@ class ApplicationController < ActionController::Base
   def self.class_for_status(status)
     return STATUS_CLASS_MAP[status]
   end
+
+  def self.time_until(time)
+		return distance_of_time_in_words(Time.now, time, include_seconds: false)
+	end
 end
 
