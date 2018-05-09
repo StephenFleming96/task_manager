@@ -1,6 +1,3 @@
-require 'action_view'
-include ActionView::Helpers::DateHelper
-
 class TasksController < ApplicationController
 	def index
 		@tasks = Task.all

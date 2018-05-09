@@ -1,3 +1,6 @@
+require 'action_view'
+include ActionView::Helpers::DateHelper
+
 class TaskStatus < ActiveRecord::Base
   enum task_status: {not_started: 0, in_progress: 1, done: 2}
 end
