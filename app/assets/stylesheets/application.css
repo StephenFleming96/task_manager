@@ -158,6 +158,7 @@
 
  .light-purple-text:hover,  .light-purple-text a:hover, .light-purple-text .link:hover {
 	 color: #cc9eff;
+	 cursor: pointer;
  }
 
  .red-text {
@@ -266,6 +267,17 @@
 	50% {
 		opacity: 0;
 	}
+}
+
+::selection {
+	background: none;
+}
+::-moz-selection {
+	background: none;
+}
+
+::-webkit-selection {
+	background: none;
 }
 
 .debug-border {

@@ -50,7 +50,7 @@ class TasksController < ApplicationController
 
 	private 
 		def task_params
-			params.require(:task).permit(:title, :description, :status, :end)
+			params.require(:task).permit(:title, :description, :status, :end, :start)
 		end
 
 		def build_date_time(params)
