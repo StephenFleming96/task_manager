@@ -15,12 +15,18 @@
  */
 
  * {
-	 font-family: sans-serif;
+	 font-family: Lato, Arial, sans-serif;
 	 color: #222;
  }
 
+ body {
+	 padding: 0;
+	 margin: 0;
+	 background-color: #ededed;
+ }
+
  .container {
-	 width: 90%;
+	 width: 98%;
 	 margin: 0 auto;
  }
 
@@ -92,6 +98,10 @@
 	 text-decoration-line: none;
  }
 
+ .hidden {
+	 display: none;
+ }
+
  .btn {
 	 border-radius: 2px;
 	 margin: 5px;
@@ -100,7 +110,7 @@
 
  .btn-blue {
 	 background-color: #c1d8ff;
-	 box-shadow: 0px 2px 5px #acc0e2;
+	 /*box-shadow: 0px 2px 5px #acc0e2;*/
 	 border: 1px solid #acc0e2;
  }
 
@@ -108,8 +118,33 @@
 	 background-color: #95b2e4;
 	 box-shadow: 0px 2px 5px #8b9bb6;
 	 border: 1px solid #8d9db8;
-	
  }
+
+ .btn-purple {
+	background-color: #bb7cff;
+	/*box-shadow: 0px 2px 3px #5e2796;*/
+	border: 1px solid #5e2796;
+ }
+
+ .btn-purple:hover {
+
+ }
+
+ .light-purple-text, .light-purple-text a {
+	color: #a177ce /* #bb7cff;	 */
+ }
+
+ .light-purple-text:hover,  .light-purple-text a:hover {
+	 color: #cc9eff;
+ }
+
+ .task-bar a, .task-bar p {
+	display: inline-block;
+	width: auto;
+	margin: auto;
+	padding: 10px;
+ }
+
 
  .dash-table-row td {
 	margin-top: 10px;
@@ -119,6 +154,15 @@
 
  .header-text {
 	 text-align: center;
+	 width: 100%;
+	 font-size: 150%;
+	 font-weight: lighter;
+
+	/* Background pattern from Toptal Subtle Patterns 
+		 toptal.com/designers/subtlepatterns/
+	*/
+	 background-image: url(what-the-hex-dark.png);
+
  }
 
  .border-light-grey {
@@ -129,12 +173,20 @@
 	 background-color: #eee;
  }
 
+ .bg-dark-grey  {
+	background-color: #373737;	
+ }
+
+ .text-light, .text-light * {
+	color: #ffe;
+ }
+
  .shadow-light-grey {
 	 box-shadow: 0px 3px 7px #ccc;
  }
 
  .border-dark-grey {
-	 border: 1px solid #777;
+	 border: 1px solid #373737;
  }
 
  .task-status {
@@ -158,6 +210,17 @@
 
 .task-error {
 	background-color: red;
+}
+
+.popup-menu {
+	position: absolute;
+	left: 50%;
+	/*width: 50%;*/
+}
+.popup-menu div {
+	position: relative;
+	left: -50%;
+	background: yellow;
 }
 
 .blink {

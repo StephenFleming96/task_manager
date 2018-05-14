@@ -1,53 +1,55 @@
-<div class="container">
-	<nav class="full">
-		<div class="header-text spacing-light bg-light-grey shadow-light-grey border-light-grey">
-			<h1>Time Management Application</h1>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="header-text bg-dark-grey border-dark-grey text-light">
+			<p>Time Management Application</p>
 		</div>
-		<div class="full">
-			<div class="left spacing-top inline">
-				<div class="btn btn-blue inline"><a href="/dash/new" class="remove-link-decoration"> New Task</a></div>
-			</div>
-			<div class="right spacing-top inline">
-				<div class="btn btn-blue inline"><a href="/logout" class="remove-link-decoration">Log Out</a></div>
-				<div class="btn btn-blue inline"><a href="/settings" class="remove-link-decoration">Settings</a></div>
+			<div class="container">
+				<br/>
+				<div class='header-text border-light-grey task-bar light-purple-text'>
+					<a href="/dash/new" class="left remove-link-decoration text-light">New Task</a>
+					<p class='text-light'>Tasks</p>
+					<a href="/logout" class="right remove-link-decoration text-light">Log Out</a>
+					<a href="#" onclick="toggleSettingsMenu()" class="right remove-link-decoration text-light">Settings</a>
+				</div>
+				<table class="table">
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Status</th>
+						<th>Time Left</th>
+						<th>Actions</th>
+					</tr>
+					<tr></tr>
+
+					<% @tasks.each do |task| %>
+						<% 
+							_task_stat = task.status.to_i; 
+							_taskId = task.id; 
+						%>
+
+						<tr class='dash-table-row'>
+							<td><%= task.title %></td>
+							<td><%= task.description %></td>
+							<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
+								<%= ApplicationController.int_to_status(task.status.to_i) %>
+							</td>
+							<td class='text-centered'><%= ApplicationController.time_until(task.end) %></td>
+							<td class='text-centered'>
+								<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
+								<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>
+							</td>
+						</tr>
+					<% end %>
+				</table>
 			</div>
 		</div>
-		<br/>
-	</nav>
-	<br/>
-
-	<div class="container">
-		<br/>
-		<h2 class='header-text border-dark-grey'>Tasks</h2>
-		<table class="table">
-			<tr>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Status</th>
-				<th>Time Left</th>
-				<th>Actions</th>
-			</tr>
-
-			<% @tasks.each do |task| %>
-				<% 
-					_task_stat = task.status.to_i; 
-					_taskId = task.id; 
-				%>
-
-				<tr class='dash-table-row'>
-					<td><%= task.title %></td>
-					<td><%= task.description %></td>
-					<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
-						<%= ApplicationController.int_to_status(task.status.to_i) %>
-					</td>
-					<td class='text-centered'><%= ApplicationController.time_until(task.end) %></td>
-					<td class='text-centered'>
-						<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
-						<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-	</div>
-</div>
-
+		<div class='popup-menu hidden'>
+			<div>
+				<p>Settings</p>
+			</div>
+		</div>
+	</body>
+</html>
