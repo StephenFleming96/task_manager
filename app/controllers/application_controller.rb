@@ -36,7 +36,13 @@ class ApplicationController < ActionController::Base
   end
 
   def self.time_until(time)
-		return distance_of_time_in_words(Time.now, time, include_seconds: false)
+    dotiw = distance_of_time_in_words(Time.now, time, include_seconds: false) 
+    if (time < Time.now)
+      dotiw = "#{dotiw} ago"
+    end
+    #fixed =  ?  : dotiw
+
+		return dotiw
 	end
 end
 
