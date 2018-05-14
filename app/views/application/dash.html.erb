@@ -12,7 +12,7 @@
 					<a href="/dash/new" class="left remove-link-decoration text-light">New Task</a>
 					<p class='text-light'>Tasks</p>
 					<a href="/logout" class="right remove-link-decoration text-light">Log Out</a>
-					<a href="#" onclick="toggleSettingsMenu()" class="right remove-link-decoration text-light">Settings</a>
+					<p href="#" onclick="toggleSettingsMenu()" class="right remove-link-decoration text-light link">Settings</p>
 				</div>
 				<table class="table">
 					<tr>
@@ -46,10 +46,27 @@
 				</table>
 			</div>
 		</div>
-		<div class='popup-menu hidden'>
+		<div id = "settings-menu" class='popup-menu hidden'>
 			<div>
-				<p>Settings</p>
+				<div class="">
+					<h2 class="spacing-left inline text-centered text-centered-vertical">Settings</h2>
+					<p class="spacing-right right inline text-centered-vertical red-text" onClick="toggleSettingsMenu()">X</p>
+				</div>
+				<div class="spacing-all">
+					<hr/>
+
+					<p>Colour Scheme: TODO</p>
+					<p>Edit Profile</p>
+				</div>
 			</div>
 		</div>
+
+		<script>
+			var toggleSettingsMenu = function() {
+				var menuElement = document.getElementById("settings-menu");
+
+				menuElement.classList.toggle("hidden");
+			}
+		</script>
 	</body>
 </html>
