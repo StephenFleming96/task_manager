@@ -61,5 +61,4 @@ class TasksController < ApplicationController
 				params["end(4i)"],
 				params["end(5i)"])
 		end
-
 end

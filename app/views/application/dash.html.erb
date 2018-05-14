@@ -36,7 +36,7 @@
 							<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
 								<%= ApplicationController.int_to_status(task.status.to_i) %>
 							</td>
-							<td class='text-centered'><%= ApplicationController.time_until(task.end) %></td>
+							<td class='text-centered'><%= ApplicationController.build_time_until_string(task.end) %></td>
 							<td class='text-centered'>
 								<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
 								<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>

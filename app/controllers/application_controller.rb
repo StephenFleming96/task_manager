@@ -40,9 +40,21 @@ class ApplicationController < ActionController::Base
     if (time < Time.now)
       dotiw = "#{dotiw} ago"
     end
-    #fixed =  ?  : dotiw
 
 		return dotiw
-	end
+  end
+  
+  def self.build_time_until_string(time)
+    time_until = ApplicationController.time_until(time)
+    span_class = ""
+    if time_until.include? "ago"
+      span_class = "red-text"
+    elsif time_until.include? "hours"
+      span_class = "yellow-text"
+    end
+
+    ret_str = "<span class='#{span_class}'>#{time_until}</span>"
+    return ret_str.html_safe
+  end
 end
 

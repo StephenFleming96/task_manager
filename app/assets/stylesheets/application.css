@@ -138,6 +138,14 @@
 	 color: #cc9eff;
  }
 
+ .red-text {
+	 color: #ea0000;
+ }
+
+ .yellow-text {
+	color: #eaaf00;
+}
+
  .task-bar a, .task-bar p {
 	display: inline-block;
 	width: auto;
