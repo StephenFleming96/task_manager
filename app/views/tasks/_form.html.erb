@@ -1,31 +1,33 @@
-<%= form_for @task do |form| %>
-	<p>
-		<%= form.label :title %>
-		<br/>
-		<%= form.text_field :title %>
-	</p>
+<div class="container">
+	<%= form_for @task do |form| %>
+		<p>
+			<%= form.label :title %>
+			<br/>
+			<%= form.text_field :title %>
+		</p>
 
-	<p>
-		<%= form.label :description %>
-		<br/>
-		<%= form.text_field :description %>
-	</p>
+		<p>
+			<%= form.label :description %>
+			<br/>
+			<%= form.text_field :description %>
+		</p>
 
-	<p class='form-select <% if hide_start %>hidden<% end %>'>
-		<%= form.label :start %>
-		<br/>
-		<%= form.datetime_select :start  %>
-	</p>
+		<p class='form-select <% if hide_start %>hidden<% end %>'>
+			<%= form.label :start %>
+			<br/>
+			<%= form.datetime_select :start  %>
+		</p>
 
-	<p class='form-select'>
-		<%= form.label :end %>
-		<br/>
-		<%= form.datetime_select :end, default: 2.days.from_now  %>
-	</p>
+		<p class='form-select'>
+			<%= form.label :end %>
+			<br/>
+			<%= form.datetime_select :end, default: 2.days.from_now  %>
+		</p>
 
-	<p>
-		<%= form.submit %>
-	</p>
+		<p>
+			<%= form.submit %>
+		</p>
 
-	<p class="hidden"><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/></p>
-<% end %>
+		<p class="hidden"><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/></p>
+	<% end %>
+</div>
