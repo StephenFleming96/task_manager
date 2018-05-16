@@ -4,6 +4,7 @@ class TasksController < ApplicationController
 	end
 
 	def new
+		@task = Task.new
 	end
 
 	def edit
@@ -12,29 +13,47 @@ class TasksController < ApplicationController
 	end
 
 	def update 
-		_taskParams = params[:task]
+		task_params = params[:task]
 
 		@task = Task.find(params[:id])
 		
-		@task.title = _taskParams[:title]
-		@task.description = _taskParams[:description]
-		@task.status = _taskParams[:status]
+		@task.title = task_params[:title]
+		@task.description = task_params[:description]
+		@task.status = task_params[:status]
 
-		@task.end = build_date_time(_taskParams)
+		t_start = build_date_time("start", task_params)
+		t_end = build_date_time("end", task_params)
 
-		@task.save
+		@task.start = t_start
+		@task.end = t_end
 
-		redirect_to '/dash'
+		if @task.save
+			redirect_to '/dash'
+		else 
+			render 'edit'
+		end
 	end
 
 	def create
 		@task = Task.new(task_params)
 
+		t_start = build_date_time("start", task_params)
+		t_end = build_date_time("end", task_params)
+
 		@task.status = 0
-		@task.end = build_date_time(task_params)
+
+		if (t_end < t_start)
+			t_end = t_start
+		end
+
+		@task.start = t_start
+		@task.end = t_end
 		
-		@task.save
-		redirect_to '/dash'
+		if @task.save
+			redirect_to '/dash'
+		else
+			render 'new'
+		end
 	end
 
 	def show
@@ -49,16 +68,20 @@ class TasksController < ApplicationController
 	end
 
 	private 
+		def task_params_without_start
+			params.require(:task).permit(:title, :description, :status, :end)
+		end
+
 		def task_params
 			params.require(:task).permit(:title, :description, :status, :end, :start)
 		end
 
-		def build_date_time(params)
+		def build_date_time(prefix, params)
 			return Time.new( 
-				params["end(1i)"],
-				params["end(2i)"],
-				params["end(3i)"],
-				params["end(4i)"],
-				params["end(5i)"])
+				params[prefix + "(1i)"],
+				params[prefix + "(2i)"],
+				params[prefix + "(3i)"],
+				params[prefix + "(4i)"],
+				params[prefix + "(5i)"])
 		end
 end
