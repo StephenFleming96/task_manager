@@ -1,52 +1,72 @@
-<div class="container">
-	<nav class="full">
-		<div class="header-text spacing-light bg-light-grey shadow-light-grey border-light-grey">
-			<p>TODO</p>
-		</div>
-		<div class="full">
-			<div class="left spacing-top inline">
-				<div class="btn btn-blue inline"><a href="/dash/new" class="remove-link-decoration"> New Task</a></div>
+<html>
+	<%= render 'application/head' %>
+	<body>
+		<%= render 'application/header'%>
+		
+		<div class="bg-main height-full">
+			<div class="container">
+				<br/>
+				<div class='header-text border-light-grey task-bar light-purple-text'>
+					<a href="/dash/new" class="left remove-link-decoration text-light">New Task</a>
+					<p class='text-light'>Tasks</p>
+					<a href="/logout" class="right remove-link-decoration text-light">Log Out</a>
+					<p href="#" onclick="toggleSettingsMenu()" class="right remove-link-decoration text-light link" onmouseover="">Settings</p>
+				</div>
+				<table class="table bg-light-grey">
+					<tr>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Status</th>
+						<th>Time Left</th>
+						<th>Actions</th>
+					</tr>
+					<tr></tr>
+
+					<% @tasks.each do |task| %>
+						<% 
+							_task_stat = task.status.to_i; 
+							_taskId = task.id; 
+						%>
+
+						<tr class='dash-table-row'>
+							<td><%= task.title %></td>
+							<td><%= task.description %></td>
+							<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
+								<%= ApplicationController.int_to_status(task.status.to_i) %>
+							</td>
+							<td class='text-centered'><%= ApplicationController.build_time_until_string(task.end) %></td>
+							<td class='text-centered'>
+								<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
+								<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>
+							</td>
+						</tr>
+					<% end %>
+				</table>
 			</div>
-			<div class="right spacing-top inline">
-				<div class="btn btn-blue inline"><a href="/logout" class="remove-link-decoration">Log Out</a></div>
-				<div class="btn btn-blue inline"><a href="/settings" class="remove-link-decoration">Settings</a></div>
+		</div>
+		
+		<div id = "settings-menu" class='popup-menu hidden'>
+			<div>
+				<div class="">
+					<h2 class="spacing-left inline text-centered text-centered-vertical">Settings</h2>
+					<p class="spacing-right right inline text-centered-vertical red-text" onClick="toggleSettingsMenu()">X</p>
+				</div>
+				<div class="spacing-all">
+					<hr/>
+
+					<p>Colour Scheme: TODO</p>
+					<p>Edit Profile</p>
+				</div>
 			</div>
 		</div>
-		<br/>
-	</nav>
-	<br/>
+		</div>
 
-	<div class="container">
-		<br/>
-		<table class="table">
-			<tr>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Status</th>
-				<th>Time Left</th>
-				<th>Actions</th>
-			</tr>
+		<script>
+			var toggleSettingsMenu = function() {
+				var menuElement = document.getElementById("settings-menu");
 
-			<% @tasks.each do |task| %>
-				<% 
-					_task_stat = task.status.to_i; 
-					_taskId = task.id; 
-				%>
-
-				<tr class='dash-table-row'>
-					<td><%= task.title %></td>
-					<td><%= task.description %></td>
-					<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
-						<%= ApplicationController.int_to_status(task.status.to_i) %>
-					</td>
-					<td class='text-centered'><%= task.end %></td>
-					<td class='text-centered'>
-						<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
-						<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>
-					</td>
-				</tr>
-			<% end %>
-		</table>
-	</div>
-</div>
-
+				menuElement.classList.toggle("hidden");
+			}
+		</script>
+	</body>
+</html>

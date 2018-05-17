@@ -1,29 +1,33 @@
- 
- 
+<div class="container">
+	<%= form_for @task do |form| %>
 		<p>
-			<%= frm.label :title %>
+			<%= form.label :title %>
 			<br/>
-			<%= frm.text_field :title %>
-		</p>
-
-		<p>
-			<%= frm.label :description %>
-			<br/>
-			<%= frm.text_field :description %>
-		</p>
-
-		<p class='frm-select'>
-			<%= frm.label :status %>
-			<br/>
-			<%= render '/tasks/dropdown', default_status: _task_stat %>
-		</p>
-
-		<p class='frm-select'>
-			<%= frm.label :end %>
-			<br/>
-			<%= frm.datetime_select :end %>
+			<%= form.text_field :title %>
 		</p>
 
 		<p>
-			<%= frm.submit %>
+			<%= form.label :description %>
+			<br/>
+			<%= form.text_field :description %>
 		</p>
+
+		<p class='form-select <% if hide_start %>hidden<% end %>'>
+			<%= form.label :start %>
+			<br/>
+			<%= form.datetime_select :start  %>
+		</p>
+
+		<p class='form-select'>
+			<%= form.label :end %>
+			<br/>
+			<%= form.datetime_select :end, default: 2.days.from_now  %>
+		</p>
+
+		<p>
+			<%= form.submit %>
+		</p>
+
+		<p class="hidden"><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/></p>
+	<% end %>
+</div>
