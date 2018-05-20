@@ -12,6 +12,10 @@
 			<%= form.text_field :description %>
 		</p>
 
+		<p>
+			<%= render '/tasks/dropdown', default_status: @task.status %>
+		</p>
+
 		<p class='form-select <% if hide_start %>hidden<% end %>'>
 			<%= form.label :start %>
 			<br/>
