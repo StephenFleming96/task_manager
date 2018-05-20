@@ -12,14 +12,27 @@
 
 ActiveRecord::Schema.define(version: 20180514090346) do
 
+  create_table "colour_scheme", force: :cascade do |t|
+    t.string "name"
+    t.string "stylesheet_name"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "colour"
+    t.integer "user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "status"
+    t.datetime "start"
     t.datetime "end"
+    t.integer "user_id"
+    t.integer "tag_td"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "status"
-    t.datetime "start"
   end
 
   create_table "users", force: :cascade do |t|
