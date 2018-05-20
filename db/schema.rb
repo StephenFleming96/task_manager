@@ -11,15 +11,16 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20180514090346) do
-
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.integer "status"
+    t.datetime "start"
     t.datetime "end"
+    t.integer "user_id"
+    t.integer "tag_td", null: true 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "status"
-    t.datetime "start"
   end
 
   create_table "users", force: :cascade do |t|
@@ -28,6 +29,17 @@ ActiveRecord::Schema.define(version: 20180514090346) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "colour"
+    t.integer "user_id"
+  end
+
+  create_table "colour_scheme", force: :cascade do |t|
+    t.string "name"
+    t.string "stylesheet_name"
   end
 
 end
