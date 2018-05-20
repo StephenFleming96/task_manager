@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     span_class = ""
     if time_until.include? "ago"
       span_class = "red-text"
-    elsif time_until.include? "hours"
+    elsif time_until.include? "hour"
       span_class = "yellow-text"
     end
 

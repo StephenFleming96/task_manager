@@ -29,8 +29,10 @@ test:
 
 production:
   adapter: postgresql
-  database: db/db_production
-  pool: 5
-  timeout: 5000
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
   #<<: *default
   #atabase: db/production.sqlite3
