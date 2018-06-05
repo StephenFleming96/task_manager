@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   
   def self.build_time_until_string(time)
     time_until = ApplicationController.time_until(time)
-
+ 
     span_class = ""
     if time_until.include? "ago"
       span_class = "red-text"
