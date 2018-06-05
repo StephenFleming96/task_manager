@@ -9,9 +9,15 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		
-		@user.save
-		redirect_to @user
+
+		@user.password = user_params[:password]
+		@user.password_confirm = user_params[:password_confirm]
+
+		if @user.save
+			redirect_to '/login'
+		else 
+			redirect_to '/register'
+		end
 	end
 
 	def show
@@ -20,7 +26,7 @@ class UsersController < ApplicationController
 
 	private
 		def user_params
-			params.require(:user).permit(:name, :email, :password)
+			params.require(:user).permit(:name, :email, :password, :password_confirm)
 		end
 end
 
