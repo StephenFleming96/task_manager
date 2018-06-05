@@ -41,6 +41,7 @@ class TasksController < ApplicationController
 		t_end = build_date_time("end", task_params)
 
 		@task.status = 0
+		@task.user_id = session[:user_id]
 
 		if (t_end < t_start)
 			t_end = t_start
