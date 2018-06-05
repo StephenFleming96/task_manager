@@ -46,11 +46,11 @@ class ApplicationController < ActionController::Base
   
   def self.build_time_until_string(time)
     time_until = ApplicationController.time_until(time)
-
+ 
     span_class = ""
     if time_until.include? "ago"
       span_class = "red-text"
-    elsif time_until.include? "hour"
+    elsif (time_until.include? "hour" or time_until.include? 'minute') 
       span_class = "yellow-text"
     end
 

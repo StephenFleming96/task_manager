@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 	post '/login', to: 'sessions#create'
 	get '/logout', to: 'sessions#destroy'
 
+	get '/register', to: 'users#new'
+	post '/register', to: 'users#create'
+
 	get '/dash', to: 'application#index'
 	get '/dash/new', to: 'tasks#new'
 	get '/dash/tasks/:id/edit', to: 'tasks#edit'
