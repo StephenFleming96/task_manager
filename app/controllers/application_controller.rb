@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       redirect_to '/login'
     else
       @tasks = Task.all.sort_by{|t| t.status.to_i}
+      @user = User.find(session[:user_id])
 
       render 'dash'
     end
