@@ -8,7 +8,7 @@ end
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  STATUS_CLASS_MAP = {0 => 'task-not-started', 1 => 'task-in-progress', 2 => 'task-done', 3 => 'task-error'}
+  STATUS_CLASS_MAP = {0 => 'task-in-progress', 1 => 'task-not-started', 2 => 'task-done', 3 => 'task-error'}
 
   def index
     if (session[:user_id] == nil || session[:expiry] == nil || session[:expiry] < Time.current)
@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   def self.int_to_status(status)
     case status
       when 0
-        return 'Not Started'
-      when 1
         return 'In Progress'
+      when 1
+        return 'Not Started'
       else 
         return 'Done'
     end
@@ -45,14 +45,17 @@ class ApplicationController < ActionController::Base
 		return dotiw
   end
   
-  def self.build_time_until_string(time)
+  def self.build_time_until_string(task)
+    time = task.end
     time_until = ApplicationController.time_until(time)
  
     span_class = ""
-    if time_until.include? "ago"
-      span_class = "red-text"
-    elsif (time_until.include? "hour" or time_until.include? 'minute') 
-      span_class = "yellow-text"
+    if task.status != 2
+      if time_until.include? "ago"
+        span_class = "red-text"
+      elsif (time_until.include? "hour" or time_until.include? 'minute') 
+        span_class = "yellow-text"
+      end
     end
 
     ret_str = "<span class='#{span_class}'>#{time_until}</span>"

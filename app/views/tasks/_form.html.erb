@@ -1,18 +1,18 @@
-<div class="container">
+<div class="container container-centered border-light-grey">
 	<%= form_for @task do |form| %>
 		<p>
 			<%= form.label :title %>
 			<br/>
-			<%= form.text_field :title %>
+			<%= form.text_field :title, :autocomplete => :off %>
 		</p>
 
 		<p>
 			<%= form.label :description %>
 			<br/>
-			<%= form.text_field :description %>
+			<%= form.text_field :description, :autocomplete => :off %>
 		</p>
 
-		<p>
+		<p class='<% if hide_status %>hidden<% end %>'>
 			<%= render '/tasks/dropdown', default_status: @task.status %>
 		</p>
 
@@ -28,7 +28,7 @@
 			<%= form.datetime_select :end, default: 2.days.from_now  %>
 		</p>
 
-		<p>
+		<p class="submit-btn">
 			<%= form.submit %>
 		</p>
 

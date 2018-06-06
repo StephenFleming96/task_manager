@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+	DEFAULT_STATUS = 1
 	def index
 		@tasks = Task.all
 	end
@@ -40,7 +41,7 @@ class TasksController < ApplicationController
 		t_start = build_date_time("start", task_params)
 		t_end = build_date_time("end", task_params)
 
-		@task.status = 0
+		@task.status = DEFAULT_STATUS
 		@task.user_id = session[:user_id]
 
 		if (t_end < t_start)
