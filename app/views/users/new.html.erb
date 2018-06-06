@@ -1,5 +1,8 @@
-<div class="container">
-	<%= form_with scope: :user, url: users_path, local: true do |form| %>
+<%= render 'application/header'%>
+<br/>
+
+<div class="container container-centered ">
+	<%= form_with scope: :user, url: '/user', local: true, :html => {:class => 'border-light-grey spacing-light'}  do |form| %>
 		<p>
 			<%= form.label :name %>
 			<%= form.text_field :name %>
@@ -11,6 +14,11 @@
 		<p>
 			<%= form.label :password %>
 			<%= form.text_field :password %>
+		</p>
+
+		<p>
+			<%= form.label :password_confirm %>
+			<%= form.text_field :password_confirm %>
 		</p>
 
 		<p>

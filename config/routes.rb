@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-	resources :users
+	#resources :users
 	resources :tasks
 
 	get '/login', to: 'sessions#new'
@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 	get '/dash', to: 'application#index'
 	get '/dash/new', to: 'tasks#new'
 	get '/dash/tasks/:id/edit', to: 'tasks#edit'
+
+	get '/user', to: 'users#show'
+	get '/user/edit', to: 'users#edit'
+	delete '/user/delete', to: 'users#delete'
+	put '/user', to: 'users#update' 
+	post '/user', to: 'users#create'
 
   	#	map 'https:../welcome/index' to welcome#index
   	get 'welcome/index'

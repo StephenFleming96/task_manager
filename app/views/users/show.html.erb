@@ -1,4 +1,10 @@
-<div class="container">
-	<p>Hello <%= @user.name %></p>
-	<p>Your email is <%= @user.email %> and your password is <%= @user.password %></p>
+<%= render 'application/header'%>
+
+<div class="container container-centered">
+	<h1>Account Management</h1>
+	<p>Hello <%= @user.name %>, your email is <%= @user.email %>.</p>
+	<p>Click <a href="/user/edit" class="light-purple-text">here</a> to edit your user details.</p>
+
+	<br/>
+	<p>Return to <strong><a href="/dash" class="light-purple-text">Dashboard</a></strong></p>
 </div>

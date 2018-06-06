@@ -36,6 +36,10 @@
 	 margin: 0 auto;
  }
 
+ .container-centered {
+	 width: 50%;
+ }
+
  .text-centered {
 	 text-align: center;
  }
@@ -138,7 +142,6 @@
 
  .btn-blue {
 	 background-color: #c1d8ff;
-	 /*box-shadow: 0px 2px 5px #acc0e2;*/
 	 border: 1px solid #acc0e2;
  }
 
@@ -150,12 +153,27 @@
 
  .btn-purple {
 	background-color: #bb7cff;
-	/*box-shadow: 0px 2px 3px #5e2796;*/
 	border: 1px solid #5e2796;
  }
 
  .btn-purple:hover {
 
+ }
+
+ .submit-btn-warning input {
+	 background-color: #ea421c;
+	 border-radius: 4px;
+	 box-shadow: 2px 2px 3px #771802;
+	 border: 0px solid red;
+	 padding: 6px;
+	 font-weight: bold;
+	 font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .submit-btn-warning input:hover {
+	background-color: #ff2f00;
+	border-radius: 2px;
+	padding: 6px 10px;
  }
 
  .light-purple-text, .light-purple-text a, .light-purple-text .link {
