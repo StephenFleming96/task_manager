@@ -1,6 +1,6 @@
 <%= render 'application/header' %>
 <div class="container">
-	<div class="container centered">
+	<div class="container container-centered">
 		<h1>Task Manager - Login</h1>
 
 		<%= form_tag '/login' do %>
@@ -9,21 +9,5 @@
 
 			<%= submit_tag "Submit" %>
 		<% end %>
-
-<!--		<br/><br/><p>IGNORE</p>
-		<%= form_for(:session, url: login_path) do |form| %>
-			<p>
-				<%= form.label :email %>
-				<%= form.text_field :email %>
-			</p>
-			<p>
-				<%= form.label :password %>
-				<%= form.password_field :password %>
-			</p>
-
-			<p>
-				<%= form.submit "Log in" %>
-			</p>
-		<% end %>-->
 	</div>
 </div>
