@@ -7,7 +7,9 @@
 				<br/>
 				<div class='header-text border-light-grey task-bar light-purple-text'>
 					<a href="/dash/new" class="left remove-link-decoration text-light">New Task</a>
-					<p class='text-light'>Tasks for <em><%= @user.name %></em></p>
+					<p class='text-light'>Tasks for 
+						<a href="/user" class="remove-link-decoration"><em><%= @user.name %></em></a>
+					</p>
 					<a href="/logout" class="right remove-link-decoration text-light">Log Out</a>
 					<p href="#" onclick="toggleSettingsMenu()" class="right remove-link-decoration text-light link" onmouseover="">Settings</p>
 				</div>
