@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
 	def create
 		user = User.find_by(email: params[:email])
 
-		if !user.authenticate(params[:password])
-			render plain: user.password
+		if user.nil? || !user&.name && !user.authenticate(params[:password])
+			#render plain: user.password
+			redirect_to '/register'
 		end
 
 		if user && user.authenticate(params[:password])

@@ -21,7 +21,61 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+		if (!session[:user_id])
+			redirect_to '/login'
+		end
+		
+		@user = User.find(session[:user_id])
+	end
+
+	def edit
+		@user = User.find(session[:user_id])
+
+		if (!@user)
+			redirect_to '/login'
+		end
+
+		render 'edit'
+	end
+
+	def update 
+		if (!session[:user_id])
+			redirect_to '/login'
+		end
+
+		user = User.find(session[:user_id])
+
+		if (!user)
+			redirect_to '/register'
+		end
+
+		user.update(name: params[:user][:name])
+		user.update(email: params[:user][:email])
+		user.update(password: params[:user][:password])
+		user.update(password_confirm: params[:user][:password_confirm])
+
+		if user.save
+			redirect_to '/user'
+		else
+			render '/edit'
+			#render plain: user.to_json
+		end
+	end
+
+	def delete
+		if (!session[:user_id])
+			redirect_to '/login'
+		end
+
+		user = User.find(session[:user_id])
+
+		if (!user)
+			redirect_to '/register'
+		end
+
+		user.destroy
+
+		redirect_to '/'
 	end
 
 	private

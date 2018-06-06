@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     if (session[:user_id] == nil || session[:expiry] == nil || session[:expiry] < Time.current)
       redirect_to '/login'
     else
-      #@tasks = Task.all
-      
       @user = User.find(session[:user_id])
       @tasks = Task.where(:user_id => @user.id).sort_by{|t| t.status.to_i}
 
