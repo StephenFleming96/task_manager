@@ -41,6 +41,11 @@
 	 padding: 5px;
  }
 
+ .container-centered-thin {
+	 width: 25%;
+	 padding: 5px;
+ }
+
  .text-centered {
 	 text-align: center;
  }
@@ -159,6 +164,22 @@
 
  .btn-purple:hover {
 
+ }
+
+ .submit-btn input {
+	background-color: #26d820;
+	border-radius: 4px;
+	box-shadow: 2px 2px 3px #147f10;
+	border: 0px solid green;
+	padding: 6px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+ }
+
+ .submit-btn input:hover  {
+	background-color: #10d808;
+	border-radius: 2px;
+	padding: 6px 10px;
  }
 
  .submit-btn-warning input {
