@@ -45,14 +45,17 @@ class ApplicationController < ActionController::Base
 		return dotiw
   end
   
-  def self.build_time_until_string(time)
+  def self.build_time_until_string(task)
+    time = task.end
     time_until = ApplicationController.time_until(time)
  
     span_class = ""
-    if time_until.include? "ago"
-      span_class = "red-text"
-    elsif (time_until.include? "hour" or time_until.include? 'minute') 
-      span_class = "yellow-text"
+    if task.status != 2
+      if time_until.include? "ago"
+        span_class = "red-text"
+      elsif (time_until.include? "hour" or time_until.include? 'minute') 
+        span_class = "yellow-text"
+      end
     end
 
     ret_str = "<span class='#{span_class}'>#{time_until}</span>"
