@@ -8,7 +8,7 @@ end
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  STATUS_CLASS_MAP = {0 => 'task-not-started', 1 => 'task-in-progress', 2 => 'task-done', 3 => 'task-error'}
+  STATUS_CLASS_MAP = {0 => 'task-in-progress', 1 => 'task-not-started', 2 => 'task-done', 3 => 'task-error'}
 
   def index
     if (session[:user_id] == nil || session[:expiry] == nil || session[:expiry] < Time.current)
@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   def self.int_to_status(status)
     case status
       when 0
-        return 'Not Started'
-      when 1
         return 'In Progress'
+      when 1
+        return 'Not Started'
       else 
         return 'Done'
     end
