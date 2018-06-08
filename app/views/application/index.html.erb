@@ -6,7 +6,7 @@
 			<div class="container">
 				<br/>
 				<div class='header-text border-light-grey task-bar light-purple-text'>
-					<a href="/dash/new" class="left remove-link-decoration text-light">New Task</a>
+					<a href="/task/new" class="left remove-link-decoration text-light">New Task</a>
 					<p class='text-light'>Tasks for 
 						<a href="/user" class="remove-link-decoration"><em><%= @user.name %></em></a>
 					</p>
@@ -30,15 +30,15 @@
 						%>
 
 						<tr class='dash-table-row'>
-							<td><%= task.title %></td>
+							<td><a href="/task/<%= _taskId %>"><%= task.title %></a></td>
 							<td><%= task.description %></td>
 							<td class="text-centered task-status <%= ApplicationController.class_for_status(task.status.to_i)%>">
 								<%= ApplicationController.int_to_status(task.status.to_i) %>
 							</td>
 							<td class='text-centered'><%= ApplicationController.build_time_until_string(task) %></td>
 							<td class='text-centered'>
-								<a href="/dash/tasks/<%= _taskId %>/edit">Edit</a>
-								<a href="/tasks/<%= _taskId %>" data-method="delete">Delete</a>
+								<a href="/task/<%= _taskId %>/edit">Edit</a>
+								<a href="/task/<%= _taskId %>" data-method="delete">Delete</a>
 							</td>
 						</tr>
 					<% end %>

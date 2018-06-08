@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
-	#resources :users
-	resources :tasks
 
 	get '/login', to: 'sessions#new'
 	post '/login', to: 'sessions#create'
 	get '/logout', to: 'sessions#destroy'
 
-	get '/register', to: 'users#new'
-	post '/register', to: 'users#create'
-
 	get '/dash', to: 'application#index'
-	get '/dash/new', to: 'tasks#new'
-	get '/dash/tasks/:id/edit', to: 'tasks#edit'
+
+	get '/task/new', to: 'tasks#new'
+	get '/task/:id/edit', to: 'tasks#edit'
+	get '/task/:id', to: 'tasks#show'
+	delete '/task/:id', to: 'tasks#destroy'
+	post '/task', to: 'tasks#create'
+	patch '/task', to: 'tasks#update'
 
 	get '/user', to: 'users#show'
 	get '/user/edit', to: 'users#edit'
-	delete '/user/delete', to: 'users#delete'
+	delete '/user/', to: 'users#destroy'
 	put '/user', to: 'users#update' 
 	post '/user', to: 'users#create'
+	post '/register', to: 'users#create'
+	get '/register', to: 'users#new'
 
   	#	map 'https:../welcome/index' to welcome#index
   	get 'welcome/index'

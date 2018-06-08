@@ -1,5 +1,6 @@
 <div class="container container-centered border-light-grey">
-	<%= form_for @task do |form| %>
+	<%= form_for @task, url: '/task' do |form| %>
+		<input type="hidden" name="id" value="<%= @task.id %>"/>
 		<p>
 			<%= form.label :title %>
 			<br/>

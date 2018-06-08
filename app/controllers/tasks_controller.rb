@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
 	def new
 		@task = Task.new
+		render 'new'
 	end
 
 	def edit
@@ -60,6 +61,7 @@ class TasksController < ApplicationController
 
 	def show
 		@task = Task.find(params[:id])
+		render 'show'
 	end
 
 	def destroy
