@@ -1,4 +1,19 @@
-<div class="container">
-	<p>Hello <%= @user.name %></p>
-	<p>Your email is <%= @user.email %> and your password is <%= @user.password %></p>
+<%= render 'application/header'%>
+<br/>
+
+<div class="container container-centered border-light-grey">
+	<h2><%= @task.title %></h2>
+	<hr/>
+
+	<p><%= @task.description %></p>
+	<br/>
+	
+	<p>Status: <%= ApplicationController.int_to_status(@task.status.to_i) %></p>
+	<p>Start Time: <%= ApplicationController.time_until(@task.start) %></p>
+	<p>Expected End Time: <%= ApplicationController.time_until(@task.end) %></p>
+	<p>Last Updated: <%= ApplicationController.time_until(@task.updated_at) %></p>
+</div>
+
+<div class="container container-centered">
+	<a href="/dash">Back to Dashboard</a>
 </div>
