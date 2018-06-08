@@ -58,7 +58,6 @@ class UsersController < ApplicationController
 			redirect_to '/user'
 		else
 			render '/edit'
-			#render plain: user.to_json
 		end
 	end
 
