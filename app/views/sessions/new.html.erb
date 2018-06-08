@@ -1,6 +1,8 @@
 <%= render 'application/header' %>
 <div class="container">
-	<div class="container container-centered">
+	<br/>
+
+	<div class="container container-centered border-light-grey">
 		<h1>Task Manager - Login</h1>
 
 		<%= form_tag '/login' do %>
@@ -9,5 +11,10 @@
 
 			<%= submit_tag "Submit" %>
 		<% end %>
+	</div>
+	<br/>
+
+	<div class="container container-centered">
+		<a href="/">Return to Home</a>
 	</div>
 </div>
