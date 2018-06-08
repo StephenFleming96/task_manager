@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       @user = User.find(session[:user_id])
       @tasks = Task.where(:user_id => @user.id).sort_by{|t| t.status.to_i}
 
-      render 'dash'
+      render 'index'
     end
   end
 
