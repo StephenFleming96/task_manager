@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def delete
+	def destroy
 		if (!session[:user_id])
 			redirect_to '/login'
 		end
