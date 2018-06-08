@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 		user = User.find_by(email: params[:email])
 
 		if user.nil? || !user&.name && !user.authenticate(params[:password])
-			#render plain: user.password
 			redirect_to '/register'
 		end
 
