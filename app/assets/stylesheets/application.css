@@ -267,6 +267,15 @@
 	color: #ffe;
  }
 
+ .validation-error {
+	 padding: 5px;
+	 background-color: #f45342;
+	 color: black;
+	 border-radius: 3px;
+	 box-shadow: 1px 1px 5px #033;
+	 text-align: center;
+ }
+
  .shadow-light-grey {
 	 box-shadow: 0px 3px 7px #ccc;
  }
