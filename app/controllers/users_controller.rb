@@ -1,9 +1,17 @@
+require 'json'
+
 class UsersController < ApplicationController
 	def index
 		@users = User.all
 	end
 
 	def new
+		@errors = params[:errors]
+
+		if @errors != nil
+			@errors = JSON.parse(params[:errors])
+		end
+
 		@user = User.new
 	end
 
@@ -16,7 +24,7 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to '/login'
 		else 
-			redirect_to '/register'
+			redirect_to(controller: "users", action: "new", errors: @user.errors.to_json)
 		end
 	end
 
@@ -30,12 +38,15 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = User.find(session[:user_id])
+		@errors = params[:errors]
+
+		if @errors != nil
+			@errors = JSON.parse(params[:errors])
+		end
 
 		if (!@user)
 			redirect_to '/login'
 		end
-
-		#render 'edit'
 	end
 
 	def update 
@@ -58,7 +69,7 @@ class UsersController < ApplicationController
 		if user.save
 			redirect_to '/user'
 		else
-			render '/edit'
+			redirect_to(controller: "users", action: "edit", errors: user.errors.to_json)
 		end
 	end
 

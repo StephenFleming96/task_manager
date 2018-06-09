@@ -64,9 +64,9 @@
  .table tr th {
 	/*border-bottom: 1px solid #777;*/
 	margin-bottom: 15px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	border: 2px solid #777;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	/*border: 2px solid #777;*/
  }
 
  .table th, .table tr:nth-child(even) td {
@@ -74,7 +74,7 @@
 }
 
  td {
-	border: 1px solid #777;
+	/*border: 1px solid #777;*/
 	margin-top: 5px;
 	margin-bottom: 5px;
 	text-align: center;
@@ -226,7 +226,7 @@
  .dash-table-row td {
 	margin-top: 10px;
 	padding: 5px;
-	border-bottom: 1px solid #666;
+	/*border-bottom: 1px solid #666;*/
 }
 
  .header-text {
@@ -265,6 +265,15 @@
 
  .text-light, .text-light * {
 	color: #ffe;
+ }
+
+ .validation-error {
+	 padding: 5px;
+	 background-color: #f45342;
+	 color: black;
+	 border-radius: 3px;
+	 box-shadow: 1px 1px 5px #033;
+	 text-align: center;
  }
 
  .shadow-light-grey {

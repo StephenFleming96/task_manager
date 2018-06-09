@@ -1,12 +1,18 @@
 class SessionsController < ApplicationController
 	def new
+		@errors = params["errors"]
+
+		if @errors
+			@errors = true
+		end
 	end
 
 	def create
 		user = User.find_by(email: params[:email])
+		errors = false
 
-		if user.nil? || !user&.name && !user.authenticate(params[:password])
-			redirect_to '/register'
+		if !user || !user&.name && !user.authenticate(params[:password])
+			errors = true
 		end
 
 		if user && user.authenticate(params[:password])
@@ -15,7 +21,8 @@ class SessionsController < ApplicationController
 
 			redirect_to '/dash'
 		else
-			#redirect_to '/login'
+			errors = true
+			redirect_to(controller: "sessions", action: "new", errors: errors)
 		end
 	end
 
