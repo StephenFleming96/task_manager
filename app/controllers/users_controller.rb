@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		if (!session[:user_id])
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
 			redirect_to '/login'
 		end
 		
@@ -39,7 +39,8 @@ class UsersController < ApplicationController
 	end
 
 	def update 
-		if (!session[:user_id])
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
+
 			redirect_to '/login'
 		end
 
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		if (!session[:user_id])
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
 			redirect_to '/login'
 		end
 

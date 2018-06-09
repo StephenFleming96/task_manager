@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   STATUS_CLASS_MAP = {0 => 'task-in-progress', 1 => 'task-not-started', 2 => 'task-done', 3 => 'task-error'}
 
   def index
-    if (session[:user_id] == nil || session[:expiry] == nil || session[:expiry] < Time.current)
+    if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
       redirect_to '/login'
     else
       @user = User.find(session[:user_id])
