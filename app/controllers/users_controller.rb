@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 			redirect_to '/login'
 		end
 
-		render 'edit'
+		#render 'edit'
 	end
 
 	def update 
