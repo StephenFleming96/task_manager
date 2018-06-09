@@ -2,6 +2,8 @@
 <br/>
 
 <div class="container container-centered ">
+
+
 	<%= form_with scope: :user, url: '/user', local: true, :html => {:class => 'border-light-grey spacing-light'}  do |form| %>
 		<p>
 			<%= form.label :name %>
@@ -25,4 +27,5 @@
 			<%= form.submit %>
 		</p>
 	<% end %>
+	<a href="/">Back</a>
 </div>

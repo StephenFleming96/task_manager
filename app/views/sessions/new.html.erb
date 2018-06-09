@@ -2,6 +2,12 @@
 <div class="container">
 	<br/>
 
+	<% if @errors %>
+		<div class="container container-centered">	
+			<p class="validation-error">Email or Password is incorrect!</p>
+		</div>
+	<% end %>
+
 	<div class="container container-centered border-light-grey">
 		<h1>Task Manager - Login</h1>
 

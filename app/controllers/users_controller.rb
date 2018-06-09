@@ -6,6 +6,12 @@ class UsersController < ApplicationController
 	end
 
 	def new
+		@errors = params[:errors]
+
+		if @errors != nil
+			@errors = JSON.parse(params[:errors])
+		end
+
 		@user = User.new
 	end
 
@@ -18,7 +24,8 @@ class UsersController < ApplicationController
 		if @user.save
 			redirect_to '/login'
 		else 
-			redirect_to '/register'
+			redirect_to(controller: "users", action: "new", errors: @user.errors.to_json)
+			#redirect_to '/register'
 		end
 	end
 
