@@ -25,7 +25,6 @@ class UsersController < ApplicationController
 			redirect_to '/login'
 		else 
 			redirect_to(controller: "users", action: "new", errors: @user.errors.to_json)
-			#redirect_to '/register'
 		end
 	end
 

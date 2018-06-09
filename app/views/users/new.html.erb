@@ -2,7 +2,13 @@
 <br/>
 
 <div class="container container-centered ">
-
+	<% if @errors %>
+		<% @errors.keys.each do |key| %>
+			<% @errors[key].each do |e| %>
+				<p class="validation-error"><%= key %> <%= e %></p>
+			<% end %>
+		<% end %>
+	<% end %>
 
 	<%= form_with scope: :user, url: '/user', local: true, :html => {:class => 'border-light-grey spacing-light'}  do |form| %>
 		<p>
