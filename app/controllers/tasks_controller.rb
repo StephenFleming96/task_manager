@@ -10,6 +10,10 @@ class TasksController < ApplicationController
 	end
 
 	def edit
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
+			redirect_to '/login'
+		end
+
 		@task = Task.find(params[:id])
 		render 'edit' 
 	end
@@ -37,6 +41,10 @@ class TasksController < ApplicationController
 	end
 
 	def create
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
+			redirect_to '/login'
+		end
+
 		@task = Task.new(task_params)
 
 		t_start = build_date_time("start", task_params)
@@ -60,11 +68,19 @@ class TasksController < ApplicationController
 	end
 
 	def show
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
+			redirect_to '/login'
+		end
+
 		@task = Task.find(params[:id])
 		render 'show'
 	end
 
 	def destroy
+		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
+			redirect_to '/login'
+		end
+		
 		@task = Task.find(params[:id])
 		@task.destroy
 		
