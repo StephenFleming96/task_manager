@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 		end
 
 		@task = Task.find(params[:id])
-		render 'edit' 
+		#render 'edit' 
 	end
 
 	def update 
@@ -80,7 +80,7 @@ class TasksController < ApplicationController
 		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
 			redirect_to '/login'
 		end
-		
+
 		@task = Task.find(params[:id])
 		@task.destroy
 		
