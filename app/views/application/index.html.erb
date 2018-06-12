@@ -1,4 +1,5 @@
 <html>
+	
 	<body>
 		<%= render 'application/header'%>
 
@@ -8,9 +9,7 @@
 				<div class='header-text border-light-grey task-bar light-purple-text' id="dashHeader">
 					<a href="/task/new" class="left remove-link-decoration text-light">New Task</a>
 
-					<p class='text-light'><span id="dashHeaderName">Tasks for</span> 
-						<a href="/user" class="remove-link-decoration"><em id="dashHeaderNameLink"><%= @user.name %></em></a>
-					</p>
+					<p class='text-light dash-header-name'><span id="dashHeaderName">Tasks for</span><a href="/user" class="remove-link-decoration"><em id="dashHeaderNameLink"><%= @user.name %></em></a></p>
 
 					<a href="/logout" class="right remove-link-decoration text-light">Log Out</a>
 
