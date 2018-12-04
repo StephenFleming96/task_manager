@@ -1,18 +1,13 @@
-<html>
-	
-	<body>
-		<%= render 'application/header'%>
+<%= render 'application/header'%>
 
-		<div class="bg-main height-full">
-			<div class="container">
-				<br/>
-				<div class='header-text border-light-grey task-bar light-purple-text' id="dashHeader">
-					<a href="/task/new" class="left remove-link-decoration text-light">New Task</a>
-
-					<p class='text-light dash-header-name'><span id="dashHeaderName">Tasks for</span><a href="/user" class="remove-link-decoration"><em id="dashHeaderNameLink"><%= @user.name %></em></a></p>
-
+<div class="container container-centered vertical three-quart">
+	<div class="container container-centered bg-main">
+		<div class="container-centered full">
+			<br/>
+			<div class='header-text border-light-grey task-bar light-purple-text' id="dashHeader">
+				<a href="/task/new" class="left remove-link-decoration text-light">New Task</a>
+					<p class='text-light dash-header-name'><span id="dashHeaderName">Tasks for</span><a href="/user" class="remove-link-decoration"><em id="dashHeaderNameLink"><%= @user.name %></em></a></p>	
 					<a href="/logout" class="right remove-link-decoration text-light">Log Out</a>
-
 					<p href="#" onclick="toggleSettingsMenu()" class="right remove-link-decoration text-light link" onmouseover="">Settings</p>
 				</div>
 				<table class="table bg-light-grey">
@@ -48,7 +43,7 @@
 				<p class="right"><a href="/dash">Refresh</a></p>
 			</div>
 		</div>
-		
+			
 		<div id="settings-menu" class='popup-menu hidden'>
 			<div>
 				<div class="">
@@ -63,30 +58,29 @@
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 
-		<script>
-			var toggleSettingsMenu = function() {
-				var menuElement = document.getElementById("settings-menu");
+	<script>
+		var toggleSettingsMenu = function() {
+			var menuElement = document.getElementById("settings-menu");
 
-				menuElement.classList.toggle("hidden");
-			}
+			menuElement.classList.toggle("hidden");
+		}
 
-			window.onresize = function(event) {
-				var dashHeader = document.getElementById("dashHeaderName");
-				var dashHeaderLink = document.getElementById("dashHeaderNameLink");
+		window.onresize = function(event) {
+			var dashHeader = document.getElementById("dashHeaderName");
+			var dashHeaderLink = document.getElementById("dashHeaderNameLink");
 
-				//onresize persists across multiple pages
-				if (dashHeader && dashHeaderLink) {
-					if (window.innerWidth < 768) {	
-						dashHeader.classList.add("hidden");
-						dashHeaderLink.classList.add("hidden");
-					} else {
-						dashHeader.classList.remove("hidden");
-						dashHeaderLink.classList.remove("hidden");
-					}
+			//onresize persists across multiple pages
+			if (dashHeader && dashHeaderLink) {
+				if (window.innerWidth < 768) {	
+					dashHeader.classList.add("hidden");
+					dashHeaderLink.classList.add("hidden");
+				} else {
+					dashHeader.classList.remove("hidden");
+					dashHeaderLink.classList.remove("hidden");
 				}
-			};
-		</script>
-	</body>
-</html>
+			}
+		};
+</script>
+	

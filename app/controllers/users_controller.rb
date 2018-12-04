@@ -51,7 +51,6 @@ class UsersController < ApplicationController
 
 	def update 
 		if (!session[:user_id] || !session[:expiry] || session[:expiry] < Time.current)
-
 			redirect_to '/login'
 		end
 

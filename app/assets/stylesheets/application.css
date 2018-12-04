@@ -32,13 +32,17 @@
  }
 
  .container {
-	 width: 98%;
-	 margin: 0 auto;
+	width: 100%;
+	display: flex;
  }
 
  .container-centered {
-	 width: 50%;
 	 padding: 5px;
+	 justify-content: center;
+ }
+
+ .container-centered div {
+	
  }
 
  .container-centered-thin {
@@ -46,12 +50,57 @@
 	 padding: 5px;
  }
 
- .text-centered {
+ .full {
+	 width: 100%;
+ }
+
+ .half {
+	 width: 50%;
+ }
+
+ .three-quart {
+	width: 75%;
+	margin: auto;
+ }
+
+ .vertical {
+	 flex-direction: column;
+ }
+
+ .text-centered, .text-centered * {
 	 text-align: center;
  }
 
  .text-centered-vertical {
 	 margin: auto;
+ }
+
+ .form-container {
+	overflow: auto;
+ }
+
+ .form-container label {
+	display: inline-block;
+	padding-right: 1%;
+	width: 14%;
+	text-align: end;
+ }
+
+ .form-container input {
+	 display: inline-block;
+	 width: 84%;
+ }
+
+ .form-container input[type=submit] {
+	margin: 10px;
+	width: 15%;
+	display: inline-block;
+	float: right;
+	overflow: auto;
+ }
+
+ .form-button {
+	 max-width: 15%;
  }
 
  .table {
@@ -86,6 +135,10 @@
 
  select {
 	 width: 100%;
+ }
+
+ .spacing-none {
+	 padding: 0px;
  }
 
  .spacing-light {
@@ -245,6 +298,14 @@
 	border: 1px solid #ddd;
  }
 
+ .border-red {
+	 border: 1px solid red;
+ }
+
+ .border-yellow {
+	border: 1px solid yellow;
+}
+
  .bg-light-grey {
 	 background-color: #eee;
  }
@@ -359,8 +420,11 @@
 	height: 100%;
 }
 
-/* and (max-width: 768px) */
-@media screen  {
+@media screen and (max-width: 768px)  {
+	.half {
+		width: 100%;
+	}
+
 	.container-centered {
 		width: 100%;
 	}

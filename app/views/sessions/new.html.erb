@@ -1,26 +1,30 @@
 <%= render 'application/header' %>
-<div class="container">
-	<br/>
+<br/>
 
-	<% if @errors %>
-		<div class="container container-centered">	
-			<p class="validation-error">Email or Password is incorrect!</p>
+<div class="container container-centered vertical">
+	<div class="container-centered">
+		<div class="container-centered">
+			<h1 class="container-centered text-centered">Task Manager - Login</h1>
+			<% if @errors %>
+				<div class="container-centered">	
+					<p class="validation-error">Email or Password is incorrect!</p>
+				</div>
+			<% end %>
 		</div>
-	<% end %>
 
-	<div class="container container-centered border-light-grey">
-		<h1>Task Manager - Login</h1>
+		<div class="three-quart spacing-light border-light-grey form-container">
+			<%= form_tag '/login', :html => {:class => "form-container"} do %>
+				<label>Email:</label> 
+				<%= text_field_tag :email %>
 
-		<%= form_tag '/login' do %>
-			<p>Email: <%= text_field_tag :email %></p>
-			<p>Password: <%= password_field_tag :password %></p>
+				<label>Password: </label>
+				<%= password_field_tag :password %>
 
-			<%= submit_tag "Submit" %>
-		<% end %>
+				<%= submit_tag "Submit" %>
+			<% end %>
+		</div>
+		<div class="container-centered three-quart">
+			<a href="/">Return to Home</a>
+		</div>
 	</div>
-	<br/>
-
-	<div class="container container-centered">
-		<a href="/">Return to Home</a>
-	</div>
-</div>
+<div>
