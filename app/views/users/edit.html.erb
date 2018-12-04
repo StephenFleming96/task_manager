@@ -1,0 +1,43 @@
+<%= render 'application/header'%>
+
+<div class="container container-centered">
+	<br/>
+	
+	<% if @errors %>
+		<% @errors.keys.each do |key| %>
+			<% @errors[key].each do |e| %>
+				<p class="validation-error"><%= key %> <%= e %></p>
+			<% end %>
+		<% end %>
+	<% end %>
+
+	<%= form_for @user, url: '/user', method: :put, :html => {:class => 'border-light-grey spacing-light'} do |form| %>
+		<p>
+			<%= form.label :name %>
+			<%= form.text_field :name %>
+		</p>
+		<p>
+			<%= form.label :email %>
+			<%= form.text_field :email %>
+		</p>
+		<p>
+			<%= form.label :password %>
+			<%= form.password_field :password %>
+		</p>
+
+		<p>
+			<%= form.label :password_confirm %>
+			<%= form.password_field :password_confirm %>
+		</p>
+
+		<p>
+			<%= form.submit %>
+		</p>
+	<% end %>
+
+	<br/>
+	<a href="/user">Back</a>
+	<%= form_for @user, url: '/user', method: :delete, :html => {:class => 'submit-btn-warning right'} do |f| %>
+		<%= f.submit 'Delete Account', data: { confirm: "Are you sure? This action cannot be reversed!" } %>
+	<% end %>
+</div>

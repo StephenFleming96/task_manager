@@ -1,13 +1,14 @@
 <%= render 'application/header'%>
 <br/>
 
-<h1 class="container container-centered">Edit Task</h1>
-<br/>
+<div class="container container-centered three-quart vertical">
+	<div class="container-centered">
+		<h1>Edit Task</h1>
+	</div>
 
-<%= render 'form', hide_start: true, hide_status: false  %>
-
-<div class="container container-centered">
-	<br/>
-	<a href="/dash">Back</a>
+	<%= render 'form', hide_start: true, hide_status: false  %>
 </div>
 
+<div class="container container-centered">
+	<a href="/dash">Back</a>
+</div>

@@ -1,33 +1,31 @@
-<div class="container container-centered border-light-grey">
+<div class="form-container border-light-grey">
 	<%= form_for @task, url: '/task' do |form| %>
-		<input type="hidden" name="id" value="<%= @task.id %>"/>
-		<p>
+		<div class="container-centered vertical">
+			<input type="hidden" name="id" value="<%= @task.id %>"/>
+			
 			<%= form.label :title %>
-			<br/>
 			<%= form.text_field :title, :autocomplete => :off %>
-		</p>
-
-		<p>
+		
 			<%= form.label :description %>
-			<br/>
 			<%= form.text_field :description, :autocomplete => :off %>
-		</p>
 
-		<p class='<% if hide_status %>hidden<% end %>'>
-			<%= render '/tasks/dropdown', default_status: @task.status %>
-		</p>
-
-		<p class='form-select <% if hide_start %>hidden<% end %>'>
-			<%= form.label :start %>
 			<br/>
-			<%= form.datetime_select :start  %>
-		</p>
 
-		<p class='form-select'>
-			<%= form.label :end %>
-			<br/>
-			<%= form.datetime_select :end, default: 2.days.from_now  %>
-		</p>
+			<p class='<% if hide_status %>hidden<% end %> three-quart'>
+				<br/>
+				<%= render '/tasks/dropdown', default_status: @task.status %>
+			</p>
+
+			<p class='form-select <% if hide_start %>hidden<% end %>'>
+				<%= form.label :start %>
+				<%= form.datetime_select :start  %>
+			</p>
+
+			<p class='form-select'>
+				<%= form.label :end %>
+				<%= form.datetime_select :end, default: 2.days.from_now  %>
+			</p>
+		</div>
 
 		<p class="submit-btn">
 			<%= form.submit %>
